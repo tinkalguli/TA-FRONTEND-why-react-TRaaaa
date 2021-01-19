@@ -1,15 +1,16 @@
 (function main() {
     let movieList = JSON.parse(localStorage.getItem("movies")) || [];
-    let inputForm = document.querySelector("#input-form");
-
+    
     class Movie {
         constructor(name) {
             this.name =  name;
             this.isWatched = false;
         }
     }
+    
+    (function handleInputEvents() {
+        let inputForm = document.querySelector("#input-form");
 
-    (function handleEvents() {
         inputForm.addEventListener("submit", (event) => {
             event.preventDefault();
             let name = event.target.children[0].value;
@@ -19,6 +20,19 @@
             createUi(movieList);
         });
     })();
+
+    function handleButtonEvents() {
+        let allButton = document.querySelectorAll(".button");
+
+        [...allButton].forEach(button => {
+            button.addEventListener("click", (event) => {
+                let id = +event.target.dataset.id;
+                movieList[id].isWatched = !movieList[id].isWatched;
+                localStorage.setItem("movies", JSON.stringify(movieList));
+                createUi(movieList);
+            });
+        });
+    }
 
     function elm(type, attr = {}, ...children) {
         let element = document.createElement(type);
@@ -47,25 +61,25 @@
         let moviesContainer = document.querySelector("#movies-container");
         moviesContainer.innerHTML = "";
 
-        movieList.forEach((movie) => {
+        movieList.forEach((movie, i) => {
             let li = elm(
-                "li", { className : "movie" },
-                elm("span", {}, movie.name),
+                "li",
+                { className : "movie" },
+                elm("span",
+                    { className : "movie-name" },
+                    movie.name
+                ),
                 elm(
-                    "button", {},
+                    "button",
+                    { className : "button",
+                      "data-id" : i },
                     movie.isWatched ? "Watched" : "To Watch"
                 )
             );
             moviesContainer.append(li);
-
-            li.addEventListener("click", (event) => {
-                if (event.target.tagName == "BUTTON") {
-                    movie.isWatched = !movie.isWatched;
-                    localStorage.setItem("movies", JSON.stringify(movieList));
-                    createUi(movieList);
-                }
-            });
         });
+
+        handleButtonEvents();
     }
 
     createUi(movieList);

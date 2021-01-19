@@ -1,6 +1,5 @@
 (function main() {
     let movieList = JSON.parse(localStorage.getItem("movies")) || [];
-    let inputForm = document.querySelector("#input-form");
 
     class Movie {
         constructor(name) {
@@ -9,7 +8,9 @@
         }
     }
 
-    (function handleEvents() {
+    (function handleInputEvents() {
+        let inputForm = document.querySelector("#input-form");
+
         inputForm.addEventListener("submit", (event) => {
             event.preventDefault();
             let name = event.target.children[0].value;
@@ -20,26 +21,38 @@
         });
     })();
 
-    function createUi(movieList) {
-        let moviesContainer = document.querySelector("#movies-container");
-        moviesContainer.innerHTML = "";
+    function handleButtonEvents() {
+        let allButton = document.querySelectorAll(".button");
 
-        movieList.forEach(movie => {
-            let li = document.createElement("li");
-            let span = document.createElement("span");
-            let button = document.createElement("button");
-            button.innerText = movie.isWatched ? "Watched" : "To Watch";
-            span.innerText = movie.name;
-            li.classList.add("movie");
-            li.append(span, button);
-            moviesContainer.append(li);
-
-            button.addEventListener("click", () => {
-                movie.isWatched = !movie.isWatched;
+        [...allButton].forEach(button => {
+            button.addEventListener("click", (event) => {
+                let id = +event.target.dataset.id;
+                movieList[id].isWatched = !movieList[id].isWatched;
                 localStorage.setItem("movies", JSON.stringify(movieList));
                 createUi(movieList);
             });
         });
+    }
+
+    function createUi(movieList) {
+        let moviesContainer = document.querySelector("#movies-container");
+        moviesContainer.innerHTML = "";
+
+        movieList.forEach((movie, i) => {
+            let li = document.createElement("li");
+            let span = document.createElement("span");
+            let button = document.createElement("button");
+            button.innerText = movie.isWatched ? "Watched" : "To Watch";
+            button.setAttribute("data-id", i);
+            button.classList.add("button");
+            span.innerText = movie.name;
+            span.classList.add("movie.name");
+            li.classList.add("movie");
+            li.append(span, button);
+            moviesContainer.append(li);
+        });
+
+        handleButtonEvents();
     }
 
     createUi(movieList);

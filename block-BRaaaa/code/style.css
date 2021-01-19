@@ -7,11 +7,11 @@
     align-items: center;
 }
 
-.movie span {
+.movie-name {
     font-size: 1.3rem;
 }
 
-.movie button {
+.button {
     border-radius: 5px;
     border: 1px solid #bbb;
     background: rgb(150, 226, 214);

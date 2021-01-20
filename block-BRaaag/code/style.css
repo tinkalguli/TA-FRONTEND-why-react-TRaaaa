@@ -1,0 +1,19 @@
+.movie {
+    padding: 0.5rem 0.8rem;
+    background: #f1f1f1;
+    border-bottom: 1px solid #bbb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-name {
+    font-size: 1.3rem;
+}
+
+.button {
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    background: rgb(150, 226, 214);
+    padding: 0.3rem 0.7rem;
+}

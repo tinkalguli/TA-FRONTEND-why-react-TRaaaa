@@ -1,5 +1,6 @@
 (function main() {
     let movieList = JSON.parse(localStorage.getItem("movies")) || [];
+    let inputForm = document.querySelector("#input-form");
     
     class Movie {
         constructor(name) {
@@ -8,30 +9,20 @@
         }
     }
     
-    (function handleInputEvents() {
-        let inputForm = document.querySelector("#input-form");
+    function handleInputEvents(event) {
+        event.preventDefault();
+        let name = event.target.children[0].value;
+        event.target.children[0].value = '';
+        movieList.push(new Movie(name));
+        localStorage.setItem("movies", JSON.stringify(movieList));
+        createUi(movieList);
+    };
 
-        inputForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let name = event.target.children[0].value;
-            event.target.children[0].value = '';
-            movieList.push(new Movie(name));
-            localStorage.setItem("movies", JSON.stringify(movieList));
-            createUi(movieList);
-        });
-    })();
-
-    function handleButtonEvents() {
-        let allButton = document.querySelectorAll(".button");
-
-        [...allButton].forEach(button => {
-            button.addEventListener("click", (event) => {
-                let id = +event.target.dataset.id;
-                movieList[id].isWatched = !movieList[id].isWatched;
-                localStorage.setItem("movies", JSON.stringify(movieList));
-                createUi(movieList);
-            });
-        });
+    function handleButtonEvents(event) {
+        let id = +event.target.dataset.id;
+        movieList[id].isWatched = !movieList[id].isWatched;
+        localStorage.setItem("movies", JSON.stringify(movieList));
+        createUi(movieList);
     }
 
     function createUi(movieList) {
@@ -57,7 +48,13 @@
         });
 
         ReactDOM.render(ui, moviesContainer);
+        
+        let allButton = document.querySelectorAll(".button");
+
+        [...allButton].forEach(button => {
+            button.addEventListener("click", handleButtonEvents);
+        });
     }
     createUi(movieList);
-    handleButtonEvents();
+    inputForm.addEventListener("submit", handleInputEvents);
 })();

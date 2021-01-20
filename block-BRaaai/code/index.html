@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watch List</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-red-100">
+    <article class="card max-w-lg mx-auto my-20 shadow-2xl"></article>
+    <script type="text/babel">
+        let cardInfo = {
+            title: 'City Lights in New York',
+            date: new Date('2017-01-26'),
+            comments: 67,
+            subTitle: 'The city that never sleeps.',
+            description:
+                'New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.',
+            category: 'photos',
+            imageURL:
+                'https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+        };
+
+        let rootElm = document.querySelector(".card");
+
+        
+        let card = <>
+                    <div className="relative">
+                        <time 
+                            className=
+                            "absolute left-full top-3 right-0 flex flex-col justify-center font-bold text-2xl w-24 h-24 rounded-full m-8 text-center bg-red-700 text-white"
+                            >
+                            <span className="block text-4xl leading-9">{cardInfo.date.getDate()}</span> 
+                            <span className="block leading-9">
+                                {cardInfo.date.toLocaleString('default', { month: 'short' }).toUpperCase()}
+                            </span>
+                        </time>
+                        <img src={cardInfo.imageURL} alt="random"/>
+                        <span
+                            className=
+                            "absolute left-0 top-full bottom-0 text-white text-2xl font-bold bg-red-700 px-4 py-2"
+                            >{cardInfo.category.toUpperCase()}
+                        </span>
+                    </div>
+                    <div className="p-8">
+                        <h2 className="text-4xl font-bold mb-1">{cardInfo.title}</h2>
+                        <p className="text-red-700 text-3xl">{cardInfo.subTitle}</p>
+                        <p className="my-6 text-xl">{cardInfo.description}</p>
+                        <ul className="flex text-2xl text-gray-600">
+                            <li className="mr-6">
+                                <span className="mr-2">o</span>
+                                6 mins ago
+                            </li>
+                            <li>
+                                <span className="mr-2">o</span>
+                                {cardInfo.comments + " " + "comments"}
+                            </li>
+                        </ul>
+                    </div>
+                </>;
+         
+        ReactDOM.render(card, rootElm);
+    </script>
+</body>
+</html>

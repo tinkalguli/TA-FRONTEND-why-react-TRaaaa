@@ -34,53 +34,30 @@
         });
     }
 
-    function elm(type, attr = {}, ...children) {
-        let element = document.createElement(type);
-
-        for (let key in attr) {
-            if (key.startsWith("data-")) {
-                element.setAttribute(key, attr[key]);
-            } else {
-                element[key] = attr[key];
-            }
-        }
-
-        children.forEach(child => {
-            if (typeof child === "object") {
-                element.append(child);
-            }
-            if (typeof child === "string") {
-                let textNode = document.createTextNode(child);
-                element.append(textNode);
-            }
-        });
-        return element;
-    }
-
     function createUi(movieList) {
         let moviesContainer = document.querySelector("#movies-container");
-        moviesContainer.innerHTML = "";
 
-        movieList.forEach((movie, i) => {
-            let li = elm(
+        let ui = movieList.map((movie, i) => {
+            let li = React.createElement(
                 "li",
                 { className : "movie" },
-                elm("span",
+                React.createElement("span",
                     { className : "movie-name" },
                     movie.name
                 ),
-                elm(
+                React.createElement(
                     "button",
                     { className : "button",
                       "data-id" : i },
                     movie.isWatched ? "Watched" : "To Watch"
                 )
             );
-            moviesContainer.append(li);
+
+            return li;
         });
 
-        handleButtonEvents();
+        ReactDOM.render(ui, moviesContainer);
     }
-
     createUi(movieList);
+    handleButtonEvents();
 })();

@@ -50,8 +50,8 @@ function Articles() {
     <section className="article-sec container">
       <h2 className="article-heading">Articles</h2>
       <div className="articles">
-      {data.map(article => {
-          return <Article {...article}/>
+      {data.map((article, i) => {
+          return <Article key={i} {...article}/>
         })}
       </div>
     </section>

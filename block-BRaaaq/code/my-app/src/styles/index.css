@@ -1,0 +1,169 @@
+/* global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* modular */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body {
+    color: #31344b;
+    background: #e6e7ee;
+}
+
+a {
+    text-decoration: none;
+    color: #31344b;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+
+/* header */
+.header {
+    padding: 1.5rem 0;
+    box-shadow: 1px 0 5px #444;
+}
+
+.navbar li {
+    font-weight: 700;
+}
+
+.navbar {
+    width: 15rem;
+}
+
+/* hero */
+.hero-sec {
+    border-bottom: 1px solid #999;
+}
+
+.hero-text {
+    font-size: 5rem;
+    font-weight: 100;
+    text-shadow: 1px 1px 0 #444;
+}
+/* Article */
+.article-sec {
+    padding: 4rem 0;
+}
+
+.article-heading {
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.article {
+    max-width: 23rem;
+    background: rgb(211, 214, 214);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+}
+
+.article-wrapper {
+    box-shadow: 1px 1px 5px #222;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+} 
+
+.article-text {
+    padding: 2rem;
+    background: #fff;
+}
+
+.article-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: #444;
+    font-weight: 500;
+}
+
+.content {
+    margin: 1.5rem 0;
+}
+
+.article-author {
+    position: absolute;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background: #8d0a3c;
+    color: #fff;
+}
+
+.article-button {
+    display: inline-block;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 0.7rem;
+    background: #333;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* footer */
+.footer {
+    padding: 1.5rem 0;
+    box-shadow: 0 1px 5px #444;
+}
+
+.footer-nav {
+    width: 10rem;
+}

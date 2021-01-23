@@ -60,10 +60,6 @@ function Button(props) {
 
 function MyButton(props) {
     return (
-        <button onClick={() => alertFruit(props.value)}>{props.id}</button>
+        <button onClick={() => alert(props.value)}>{props.id}</button>
     )
-}
-
-function alertFruit(value) {
-    alert(value);
 }

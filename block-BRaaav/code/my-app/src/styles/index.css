@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -310,12 +312,13 @@ body {
   display: flex;
   align-items: center;
   color: #ffffff;
+ 
   background: linear-gradient(
       to right,
       rgba(19, 120, 228, 0.7),
       rgba(126, 243, 102, 0.7)
     ),
-    url(../media/home-bg.jpg) center center no-repeat;
+    url("../backgroudImages/home-bg.jpg") center center no-repeat;
   background-size: cover;
 }
 

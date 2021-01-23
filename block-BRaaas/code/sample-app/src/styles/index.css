@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 5rem 0;
+}
+
+.container {
+    max-width: 30rem;
+    margin: 1rem auto;
+    border-radius: 5px;
+    text-align: center;
+    background: rgb(147, 253, 253);
+}
+
+button {
+    margin: 2rem 1rem;
+    padding: 0.5rem 0.7rem;
+}

@@ -1,0 +1,75 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.dark-container {
+  background: #242424;
+}
+
+.container {
+  max-width: 30rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* This is for spacing of the buttons */
+.container button {
+  margin: 1rem;
+}
+
+
+/* button styles */
+.small {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+.medium {
+  padding: 0.6rem 0.8rem;
+  font-size: 1.3rem;
+}
+
+.large {
+  padding: 0.8rem 1rem;
+  font-size: 1.6rem;
+}
+
+.primary {
+  background: var(--primary-bg);
+  color: var(--text-color);
+  border: 0;
+  border-radius: 3px;
+}
+
+.secondary {
+  background: var(--secondary-bg);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  border-radius: 3px;
+}
+
+.tertiary {
+  border: 0;
+  background: transparent;
+  color: var(--text-color);
+}
+
+.light {
+  --primary-bg : #d36363;
+  --secondary-bg: #e6e6e6;
+  --text-color: #242424;
+}
+
+.dark {
+  --primary-bg : #300505;
+  --secondary-bg: #333333;
+  --text-color: #e7e7e7;
+}

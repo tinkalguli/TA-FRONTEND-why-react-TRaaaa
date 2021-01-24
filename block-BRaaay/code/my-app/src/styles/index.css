@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.container {
+  max-width: 58rem;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  box-shadow: 0 0 10px #666;
+  border-radius: 0.5rem;
+  background: rgb(248, 248, 248);
+}
+
+.row {
+  margin-bottom: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.color-heading {
+  flex-basis: 10rem;
+  margin-right: 2rem;
+}
+
+.colors {
+  flex-basis: 1fr;
+}
+
+.color-item {
+  width: 8rem;
+  margin-bottom: 0.8rem;
+  margin-right: 1rem;
+}
+
+.color {
+  margin-bottom: 0.3rem;
+  display: block;
+  height: 2rem;
+  border-radius: 3px;
+}
